@@ -30,6 +30,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -64,6 +65,10 @@
             "production": {
               "buildTarget": "sArchitecture:build:production"
             },
+            "options":{
+              "proxyConfig": "proxy.conf.json"
+
+            },
             "development": {
               "buildTarget": "sArchitecture:build:development"
             }
@@ -90,6 +95,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []

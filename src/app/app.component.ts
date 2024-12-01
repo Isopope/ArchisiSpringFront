@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { TerrainListComponent } from './terrain-list/terrain-list.component';
+import { TerrainFormComponent } from './terrain-form/terrain-form.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [MatSlideToggleModule, TerrainListComponent,TerrainFormComponent, ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
