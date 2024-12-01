@@ -15,7 +15,7 @@ export class TerrainsService {
 
 
   createTerrain(terrain: Terrain): Observable<Terrain> {
-    return this.http.post<Terrain>(`${this.API_URL}/${this.API_ENTITY_NAME}/`, terrain);
+    return this.http.post<Terrain>(`${this.API_URL}/${this.API_ENTITY_NAME}`, terrain);
   }
 
 

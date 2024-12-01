@@ -13,11 +13,11 @@ export class UtilisateursService {
     constructor(private readonly http:HttpClient) { }
 
     createUtilisateur(utilisateur:Utilisateur):Observable<Utilisateur>{
-        return this.http.post<Utilisateur>(`${this.API_URL}/${this.API_ENTITY_NAME}/`, utilisateur);
+        return this.http.post<Utilisateur>(`${this.API_URL}/${this.API_ENTITY_NAME}`, utilisateur);
     }
 
     getAllUtilisateurs():Observable<Utilisateur[]>{
-        return this.http.get<Utilisateur[]>(`${this.API_URL}/${this.API_ENTITY_NAME}/`);
+        return this.http.get<Utilisateur[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
     }
 
     getOneUtilisateur(id:number):Observable<Utilisateur>{

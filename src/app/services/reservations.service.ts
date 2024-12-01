@@ -17,12 +17,12 @@ export class ReservationsService {
 
 
   createReservation(reservation: Reservation): Observable<Reservation> {
-    return this.http.post<Reservation>(`${this.API_URL}/${this.API_ENTITY_NAME}/`, reservation);
+    return this.http.post<Reservation>(`${this.API_URL}/${this.API_ENTITY_NAME}`, reservation);
   }
 
 
   getAllReservations(): Observable<Reservation[]> {
-    return this.http.get<Reservation[]>(`${this.API_URL}/${this.API_ENTITY_NAME}/`);
+    return this.http.get<Reservation[]>(`${this.API_URL}/${this.API_ENTITY_NAME}`);
   }
 
 
