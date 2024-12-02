@@ -17,7 +17,7 @@ import { TerrainsService } from '../services/terrains.service';
 })
 export class TerrainListComponent implements AfterViewInit {
   private _liveAnnouncer = inject(LiveAnnouncer);
-  colonnes: string[] = ['nom', 'quantite', 'description','pointGeo','actions'];
+  colonnes: string[] = ['nom', 'quantite', 'description', 'pointGeo', 'actions'];
   terrains = new MatTableDataSource<Terrain>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

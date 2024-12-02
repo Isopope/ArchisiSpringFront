@@ -5,6 +5,6 @@ export class Reservation {
     utilisateurId!: number;
     terrainId!: number;
     reservation!: number;
-    utilisateur!: Utilisateur; 
-    terrain!: Terrain; 
+    utilisateur!: Utilisateur;
+    terrain!: Terrain;
 }

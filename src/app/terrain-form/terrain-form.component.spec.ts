@@ -10,8 +10,8 @@ describe('TerrainFormComponent', () => {
     await TestBed.configureTestingModule({
       imports: [TerrainFormComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(TerrainFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

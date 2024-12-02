@@ -65,9 +65,8 @@
             "production": {
               "buildTarget": "sArchitecture:build:production"
             },
-            "options":{
+            "options": {
               "proxyConfig": "proxy.conf.json"
-
             },
             "development": {
               "buildTarget": "sArchitecture:build:development"

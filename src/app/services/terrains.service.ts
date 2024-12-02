@@ -37,5 +37,5 @@ export class TerrainsService {
   deleteTerrain(id: number): Observable<void> {
     return this.http.delete<void>(`${this.API_URL}/${this.API_ENTITY_NAME}/${id}`);
   }
-  
+
 }

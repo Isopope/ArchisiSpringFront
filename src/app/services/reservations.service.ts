@@ -12,8 +12,8 @@ export class ReservationsService {
   API_ENTITY_NAME = 'reservations';
 
   constructor(private readonly http: HttpClient) {
-    
-   }
+
+  }
 
 
   createReservation(reservation: Reservation): Observable<Reservation> {

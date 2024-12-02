@@ -10,8 +10,8 @@ describe('TerrainListComponent', () => {
     await TestBed.configureTestingModule({
       imports: [TerrainListComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(TerrainListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
