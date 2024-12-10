@@ -5,7 +5,7 @@ import { TerrainListComponent } from './terrain-list/terrain-list.component';
 export const routes: Routes = [
     { path: 'terrains', component: TerrainListComponent },
     { path: 'terrain/new', component: TerrainFormComponent },
-    { path: 'edit/:id', component: TerrainFormComponent },
+    { path: 'terrains/:id', component: TerrainFormComponent },
     { path: '**', redirectTo: 'terrains' },
 ];
 

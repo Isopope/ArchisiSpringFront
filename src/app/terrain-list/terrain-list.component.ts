@@ -19,8 +19,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TerrainListComponent implements AfterViewInit {
   private _liveAnnouncer = inject(LiveAnnouncer);
   colonnes: string[] = ['nom', 'quantite', 'description', 'pointGeo', 'actions'];
+  
   terrains = new MatTableDataSource<Terrain>([]);
-
+  clickedRows = new Set<Terrain>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -54,7 +55,7 @@ export class TerrainListComponent implements AfterViewInit {
   deleteTerrain(id: number) {
     this.terrainService.deleteTerrain(id).subscribe({
       next: () => {
-        this.loadTerrains(); // Recharge la liste après suppression
+        this.loadTerrains();
       },
       error: (err) => {
         console.error('Error deleting terrain:', err);
@@ -63,6 +64,9 @@ export class TerrainListComponent implements AfterViewInit {
   }
 
   editTerrain(id: number) {
-    this.router.navigate(['/edit/',id]);
+    this.router.navigate(['/terrains/',id]);
+  }
+  navigateToEdit(id: number) {
+    this.router.navigate(['/terrains/',id]);
   }
 }
