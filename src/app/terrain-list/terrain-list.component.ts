@@ -7,6 +7,7 @@ import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Terrain } from '../models/terrain.model';
 import { TerrainsService } from '../services/terrains.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-terrain-list',
@@ -23,7 +24,7 @@ export class TerrainListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private terrainService: TerrainsService) {}
+  constructor(private terrainService: TerrainsService,private router:Router,private route: ActivatedRoute) {}
 
   ngAfterViewInit() {
     this.loadTerrains();
@@ -62,6 +63,6 @@ export class TerrainListComponent implements AfterViewInit {
   }
 
   editTerrain(id: number) {
-    
+    this.router.navigate(['/edit/',id]);
   }
 }
