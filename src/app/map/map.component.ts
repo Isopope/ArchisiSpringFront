@@ -1,5 +1,7 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import * as L from 'leaflet';
+import { Terrain } from '../models/terrain.model';
+import { TerrainsService } from '../services/terrains.service';
 
 @Component({
   selector: 'app-map',
@@ -13,8 +15,8 @@ export class MapComponent implements AfterViewInit {
 
   private initMap(){
     this.map=L.map('map',{
-      center:[ 39.8282, -98.5795],
-      zoom: 3
+      center:[47.3766733512, 0.6990401446],
+      zoom: 13
     });
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
@@ -24,11 +26,28 @@ export class MapComponent implements AfterViewInit {
 
     tiles.addTo(this.map);
   }
-  constructor(){
+
+  private loadTerrainsOnMap(): void {
+    this.terrainService.getAllTerrains().subscribe({
+      next: (terrains: Terrain[]) => {
+        terrains.forEach((terrain) => {
+          const [lat, lng] = terrain.pointGeo.split(',').map(coord => parseFloat(coord.trim()));
+
+          L.marker([lat, lng]).addTo(this.map!)
+            .bindPopup(`<b>${terrain.nom}</b><br>${terrain.description}`);
+        });
+      },
+      error: (err) => {
+        console.error('Error loading terrains on map:', err);
+      }
+    });
+  }
+  constructor(private terrainService: TerrainsService){
 
   }
   ngAfterViewInit(): void {
     this.initMap()
+    this.loadTerrainsOnMap()
   }
  
 }
