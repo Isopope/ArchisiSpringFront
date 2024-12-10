@@ -13,7 +13,7 @@ import { TerrainsService } from '../services/terrains.service';
   standalone: true,
   imports: [MatButtonModule, MatTableModule, CommonModule, MatPaginatorModule, MatSortModule],
   templateUrl: './terrain-list.component.html',
-  styleUrl: './terrain-list.component.scss'
+  styleUrls: ['./terrain-list.component.scss'],
 })
 export class TerrainListComponent implements AfterViewInit {
   private _liveAnnouncer = inject(LiveAnnouncer);
@@ -23,7 +23,7 @@ export class TerrainListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private terrainService: TerrainsService) { }
+  constructor(private terrainService: TerrainsService) {}
 
   ngAfterViewInit() {
     this.loadTerrains();
@@ -38,7 +38,7 @@ export class TerrainListComponent implements AfterViewInit {
       },
       error: (err) => {
         console.error('Error loading terrains:', err);
-      }
+      },
     });
   }
 
@@ -50,6 +50,18 @@ export class TerrainListComponent implements AfterViewInit {
     }
   }
 
+  deleteTerrain(id: number) {
+    this.terrainService.deleteTerrain(id).subscribe({
+      next: () => {
+        this.loadTerrains(); // Recharge la liste après suppression
+      },
+      error: (err) => {
+        console.error('Error deleting terrain:', err);
+      },
+    });
+  }
 
-
+  editTerrain(id: number) {
+    
+  }
 }

@@ -7,7 +7,7 @@ import { TerrainFormComponent } from './terrain-form/terrain-form.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MatSlideToggleModule, TerrainListComponent,TerrainFormComponent, ],
+  imports: [MatSlideToggleModule, TerrainListComponent,TerrainFormComponent ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

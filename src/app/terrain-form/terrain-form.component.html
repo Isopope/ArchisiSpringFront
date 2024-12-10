@@ -1,1 +1,54 @@
-<p>terrain-form works!</p>
+<div class="form-container">
+    <h1>{{ isEditMode ? 'Modifier Terrain' : 'Créer Terrain' }}</h1>
+    <form [formGroup]="terrainForm" (ngSubmit)="onSubmit()">
+      <!-- Nom -->
+      <div>
+        <label for="nom">Nom</label>
+        <input id="nom" formControlName="nom" placeholder="Nom du terrain" />
+        <div *ngIf="terrainForm.get('nom')?.touched && terrainForm.get('nom')?.invalid">
+          <small>Le nom est requis.</small>
+        </div>
+      </div>
+  
+      <!-- Quantité -->
+      <div>
+        <label for="quantite">Quantité</label>
+        <input
+          id="quantite"
+          type="number"
+          formControlName="quantite"
+          placeholder="Quantité disponible"
+        />
+        <div *ngIf="terrainForm.get('quantite')?.touched && terrainForm.get('quantite')?.invalid">
+          <small>La quantité est requise et doit être supérieure à 0.</small>
+        </div>
+      </div>
+  
+      <!-- Description -->
+      <div>
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description" placeholder="Description"></textarea>
+        <div *ngIf="terrainForm.get('description')?.touched && terrainForm.get('description')?.invalid">
+          <small>La description est requise.</small>
+        </div>
+      </div>
+  
+      <!-- Point géographique -->
+      <div>
+        <label for="pointGeo">Point Géographique</label>
+        <input id="pointGeo" formControlName="pointGeo" placeholder="Latitude, Longitude" />
+        <div *ngIf="terrainForm.get('pointGeo')?.touched && terrainForm.get('pointGeo')?.invalid">
+          <small>Le point géographique est requis.</small>
+        </div>
+      </div>
+  
+      <!-- Boutons -->
+      <div class="form-buttons">
+        <button type="submit" [disabled]="terrainForm.invalid">
+          {{ isEditMode ? 'Modifier' : 'Créer' }}
+        </button>
+        <button type="button" (click)="onCancel()">Annuler</button>
+      </div>
+    </form>
+  </div>
+  
