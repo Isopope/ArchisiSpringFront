@@ -19,7 +19,21 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./user-reservations.component.scss']
 })
 export class UserReservationsComponent {
-cancelReservation(_t25: any) {
+cancelReservation(reservation: Reservation) {
+  this.reservationsService.deleteReservation(reservation.utilisateurId, reservation.terrainId).subscribe({
+    next: () => {
+      this.snackBar.open('Reservation supprimé avec succès!', 'Fermer', {
+        duration: 3000,
+      });
+      this.loadReservations();
+    },
+    error: (err) => {
+      this.snackBar.open('Échec de la suppression de la Reservation. Veuillez réessayer.', 'Fermer', {
+        duration: 3000,
+      });
+      console.error('Error deleting Reservation:', err);
+    },
+  });;
 
 }
   private _liveAnnouncer = inject(LiveAnnouncer);
