@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'root'
 })
 export class UtilisateursService {
+    
 
     API_URL = "http://localhost:8080/api/v1";
     API_ENTITY_NAME: string = "utilisateurs";
@@ -31,5 +32,14 @@ export class UtilisateursService {
     deleteUtilisateur(id: number, utilisateur: Utilisateur): Observable<void> {
         return this.http.delete<void>(`${this.API_URL}/${this.API_ENTITY_NAME}/${id}`);
     }
+
+    login(mail: string, password: string): Observable<any> {
+        const payload = { mail, password };
+        return this.http.post(`${this.API_URL}/authentifications/login`, payload);
+      }
+
+      register(user: any): Observable<any> {
+        return this.http.post(`${this.API_URL}/authentifications/signup`, user);
+      }
 
 }

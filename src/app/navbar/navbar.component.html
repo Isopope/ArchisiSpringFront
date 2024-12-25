@@ -1,0 +1,35 @@
+<nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <!-- Logo -->
+        <div class="flex shrink-0 items-center">
+          <img
+            class="h-8 w-auto"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Logo_Polytech_Tours.svg/langfr-1920px-Logo_Polytech_Tours.svg.png"
+            alt="Logo"
+          />
+        </div>
+  
+        <!-- Navigation Links -->
+        <div class="hidden sm:block sm:flex-1 sm:flex sm:justify-center">
+          <div class="flex space-x-4">
+            <a routerLink="/" routerLinkActive="bg-gray-700" class="rounded-md px-3 py-2 text-sm font-medium text-white">Home</a>
+            <a routerLink="/terrains" routerLinkActive="bg-gray-700" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Terrains</a>
+  
+            <!-- Si non connecté -->
+            <ng-container *ngIf="!authService.isAuthenticated()">
+              <a routerLink="/login" routerLinkActive="bg-gray-700" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Login</a>
+              <a routerLink="/signup" routerLinkActive="bg-gray-700" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Signup</a>
+            </ng-container>
+  
+            <!-- Si connecté -->
+            <ng-container *ngIf="authService.isAuthenticated()">
+              <a routerLink="/mesreservations" routerLinkActive="bg-gray-700" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Mes reservations</a>
+              <button (click)="logout()" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Logout</button>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  

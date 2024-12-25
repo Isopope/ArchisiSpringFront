@@ -34,7 +34,7 @@ export class MapComponent implements AfterViewInit {
           const [lat, lng] = terrain.pointGeo.split(',').map(coord => parseFloat(coord.trim()));
 
           L.marker([lat, lng]).addTo(this.map!)
-            .bindPopup(`<b>${terrain.nom}</b><br>${terrain.description}`);
+            .bindPopup(`<b>${terrain.nom}</b><br>${terrain.description}</br><br>${terrain.pointGeo}`);
         });
       },
       error: (err) => {

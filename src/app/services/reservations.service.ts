@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Reservation } from '../models/reservation.model';
@@ -17,7 +17,10 @@ export class ReservationsService {
 
 
   createReservation(reservation: Reservation): Observable<Reservation> {
-    return this.http.post<Reservation>(`${this.API_URL}/${this.API_ENTITY_NAME}`, reservation);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', // Définir le type de contenu en JSON
+    });
+    return this.http.post<Reservation>(`${this.API_URL}/${this.API_ENTITY_NAME}`, reservation, {headers});
   }
 
 
@@ -28,6 +31,10 @@ export class ReservationsService {
 
   getReservationById(utilisateurId: number, terrainId: number): Observable<Reservation> {
     return this.http.get<Reservation>(`${this.API_URL}/${this.API_ENTITY_NAME}/?utilisateurId=${utilisateurId}&terrainId=${terrainId}`);
+  }
+
+  getReservationByUtilisateur(utilisateurId: number): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${this.API_URL}/${this.API_ENTITY_NAME}/utilisateurs/${utilisateurId}`);
   }
 
 

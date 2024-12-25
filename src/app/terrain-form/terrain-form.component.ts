@@ -86,7 +86,7 @@ export class TerrainFormComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.router.navigate(['/terrains']);
+    this.router.navigate(['/']);
   }
   
 
